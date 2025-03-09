@@ -52,7 +52,18 @@ public final class Constants {
 
     }
 
-    public static final class ClimberConstants {
+    public static final class DriveConstants {
+
+        public static double adjustSpeed (double speed) {
+         
+            double  exponent = 2.5; // adust this for responsiveness
+            double newSpeed = Math.signum(speed)* Math.pow(Math.abs(speed),exponent);
+            return newSpeed;
+            
+        }
+    }
+
+    public static final class ClimberConstants {    
 
         public static final int FrontClimbCanID = 2;
         public static final int BackClimbCanID = 3;
