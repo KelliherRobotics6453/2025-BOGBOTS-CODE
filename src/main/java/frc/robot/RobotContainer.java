@@ -17,8 +17,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.Constants.ElevatorConstants;
-import frc.robot.Commands.ElevatorCommand;
-import frc.robot.Commands.ElevatorPIDCommand;
+import frc.robot.commands.ElevatorCommand;
+import frc.robot.commands.ElevatorPIDCommand;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.ElevatorSubsystem;
@@ -112,7 +112,7 @@ public class RobotContainer {
         joystick.pov(180).whileTrue(new ElevatorCommand((ElevatorConstants.ElevatorSpeed * -1), m_ElevatorSubsystem)).onFalse(new ElevatorCommand(0, m_ElevatorSubsystem));
         
         joystick.rightTrigger().whileTrue(m_PivotSubsystem.pivotCommand(joystick.getRightTriggerAxis())).onFalse(m_PivotSubsystem.pivotCommand(0));
-        joystick.leftTrigger().whileTrue(m_PivotSubsystem.pivotCommand(joystick.getLeftTriggerAxis())).onFalse(m_PivotSubsystem.pivotCommand(0));
+        joystick.leftTrigger().whileTrue(m_PivotSubsystem.pivotCommand(joystick.getLeftTriggerAxis()*-1)).onFalse(m_PivotSubsystem.pivotCommand(0));
         
         drivetrain.registerTelemetry(logger::telemeterize);
     }
