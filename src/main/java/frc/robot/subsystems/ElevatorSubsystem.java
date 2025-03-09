@@ -19,7 +19,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   private static SparkMax LeftElavatorSpark = new SparkMax(ElevatorConstants.ElevatorCanID, MotorType.kBrushless);
   private static SparkMax RightElavatorSpark = new SparkMax(ElevatorConstants.ElevatorCanID2, MotorType.kBrushless);
   private static SparkMaxConfig elevatorConfig = new SparkMaxConfig();
-  private static RelativeEncoder encoder;
+  private static RelativeEncoder encoder = LeftElavatorSpark.getEncoder();
   private static PIDController PIDElevator = new PIDController(ElevatorConstants.kp, ElevatorConstants.ki,ElevatorConstants.kd);
 
   public ElevatorSubsystem() {
