@@ -56,7 +56,7 @@ public final class Constants {
 
         public static double adjustSpeed (double speed) {
          
-            double  exponent = 2.5; // adust this for responsiveness
+            double  exponent = 0.5; // adust this for responsiveness
             double newSpeed = Math.signum(speed)* Math.pow(Math.abs(speed),exponent);
             return newSpeed;
             
