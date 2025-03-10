@@ -20,7 +20,7 @@ import frc.robot.Constants.PivotConstants;
 
 public class PivotSubsystem extends SubsystemBase {
     
-    private static SparkMax sparkMax13 = new SparkMax(PivotConstants.PivotCanID, MotorType.kBrushless);
+    private static SparkMax sparkMax7 = new SparkMax(PivotConstants.PivotCanID, MotorType.kBrushless);
     private static AbsoluteEncoder encoder;
     private static SparkMaxConfig pivotConfig = new SparkMaxConfig();
     private static PIDController PivotPID = new PIDController(.01, 0, 0);
@@ -29,8 +29,8 @@ public class PivotSubsystem extends SubsystemBase {
         pivotConfig.idleMode(IdleMode.kBrake).smartCurrentLimit(MotorConstants.AmpLimitNeo).inverted(true);
         pivotConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
         pivotConfig.absoluteEncoder.positionConversionFactor(360).inverted(true);
-        sparkMax13.configure(pivotConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-        encoder = sparkMax13.getAbsoluteEncoder();
+        sparkMax7.configure(pivotConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        encoder = sparkMax7.getAbsoluteEncoder();
         PivotPID.setTolerance(1);
         PivotPID.setIZone(3);
     }
@@ -54,7 +54,7 @@ public class PivotSubsystem extends SubsystemBase {
     }
 
     public void stopMotor() {
-        sparkMax13.set(0);
+        sparkMax7.set(0);
     }
 
     public void PIDSetSpeed(double speed) {
@@ -63,16 +63,16 @@ public class PivotSubsystem extends SubsystemBase {
         } if (speed < -PivotConstants.PivotMaxSpeed) {
             speed = -PivotConstants.PivotMaxSpeed;
         }
-        sparkMax13.set(speed);
+        sparkMax7.set(speed);
     }
 
     public void setSpeed(double speed) {
-        sparkMax13.set(speed);
+        sparkMax7.set(speed);
     }
 
     public Command pivotCommand(double speed) {
         return run(() -> {
-            sparkMax13.set(speed);
+            sparkMax7.set(speed);
         });
     }
 
