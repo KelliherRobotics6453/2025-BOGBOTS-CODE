@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
-import frc.robot.generated.TunerConstants;
+//import frc.robot.generated.TunerConstants;
 import edu.wpi.first.wpilibj.Timer;
-import frc.robot.subsystems.CommandSwerveDrivetrain;
+//import frc.robot.subsystems.CommandSwerveDrivetrain;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;

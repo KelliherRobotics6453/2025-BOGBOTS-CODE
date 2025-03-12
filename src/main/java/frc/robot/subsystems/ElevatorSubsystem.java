@@ -25,7 +25,8 @@ public class ElevatorSubsystem extends SubsystemBase {
   public ElevatorSubsystem() {
     elevatorConfig.idleMode(IdleMode.kBrake).smartCurrentLimit(MotorConstants.AmpLimitNeo);
     elevatorConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder);
-    elevatorConfig.encoder.positionConversionFactor((Math.PI * (ElevatorConstants.PitchDia)) / (ElevatorConstants.GearRedution));
+    elevatorConfig.encoder.positionConversionFactor(0.1);
+   // elevatorConfig.encoder.positionConversionFactor((Math.PI * (ElevatorConstants.PitchDia)) / (ElevatorConstants.GearRedution));
     LeftElavatorSpark.configure(elevatorConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     PIDElevator.setTolerance(ElevatorConstants.kErrorTol);
     RightElavatorSpark.configure(elevatorConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -60,10 +61,12 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public RelativeEncoder getRelativeEncoder() {
     return encoder;
+    
   }
 
   public double getEncoderPosition() {
     return encoder.getPosition();
+    
   }
 
   public void resetEncoder() {
@@ -81,7 +84,6 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Pivot Height", getEncoderPosition() + 0); // change 0 to the height of the pivot
-    
+    SmartDashboard.putNumber("encoder", getEncoderPosition());
 }
 }

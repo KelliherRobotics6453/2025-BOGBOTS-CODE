@@ -1,12 +1,10 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.RobotBase;
-
 public final class Constants {
 
     public static final class ShooterConstants {
         public static final int ShooterCanID = 11;
-        public static final double ShooterSpeed = .5;
+        public static final double ShooterSpeed = .75;
     }
 
     public static final class AutoConstants {
@@ -44,7 +42,7 @@ public final class Constants {
                                                // https://tinyurl.com/25Sprockets
 
         // PID Constants **dangerous to change**
-        public static double kp = 0.0;
+        public static double kp = 0.001;
         public static double ki = 0;
         public static double kd = 0;
         public static double kErrorTol = .02;
@@ -67,19 +65,33 @@ public final class Constants {
             
         }
     }
+    // public static final class ClimberConstants {    
 
-    public static final class ClimberConstants {    
+    //     public static final int FrontClimbCanID = 2;
+    //     public static final int BackClimbCanID = 3;
+    //     public static final double ClimbSpeed = 0.4;
+    
 
-        public static final int FrontClimbCanID = 2;
-        public static final int BackClimbCanID = 3;
-        public static final double ClimbSpeed = 0.4;
-    }
-
-    public static final class PivotConstants {
+    public final class PivotConstants {
 
         public static final int PivotCanID = 7;
-        public static final double PivotSpeed = .15;
+        public static final double PivotSpeed = .25;
         public static final double PivotMaxSpeed = .6;
+
+
+        // Pivot PID Constants **dangerous to change**
+        public static double kp = 0.001;
+        public static double ki = 0;
+        public static double kd = 0;
+        public static double kErrorTol = .02;
+
+        // Pivot Setpoints
+        public static double kIntake = 235;
+        public static double kL2 = 305 ;
+        public static double KL4= 310; //update this klj
+        
+        
+
     }
 
 }
